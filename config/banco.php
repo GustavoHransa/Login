@@ -1,21 +1,17 @@
 <?php
+    session_start();
 
-class banco {
-    const host = 'localhost';
-    const banco = 'login';
-    const usuario = 'root';
-    const senha = '';
-    public $conexao;
+    $servername = 'localhost';
+    $bdname = 'login';
+    $username = 'root';
+    $password = '';
+   
 
-    public function conectar(){
-        $this->conexao = new mysqli(self::host, self::usuario, self::senha, self::banco);
+        $conexao = new mysqli($servername,$username,$password,$bdname);
 
         
-        if(!$this->conexao){
-            echo 'erro na conexao';
-        }else{
-            return $this->conexao;
+        if($conexao -> connect_error){
+            die("Erro no banco de dados :" .$conexao ->conect_error);
         }
-    }
-}
+ 
 ?>
